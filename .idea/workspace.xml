@@ -58,7 +58,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1585525000869</updated>
-      <workItem from="1585525005000" duration="7285000" />
+      <workItem from="1585525005000" duration="9707000" />
     </task>
     <task id="LOCAL-00001" summary="small update">
       <created>1585525874821</created>
@@ -81,7 +81,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585528805776</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="started working on the massive switch statement">
+      <created>1585533661521</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1585533661521</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -91,7 +98,8 @@
     <MESSAGE value="small update" />
     <MESSAGE value="added inputstream skeleton" />
     <MESSAGE value="got it to read the binary file" />
-    <option name="LAST_COMMIT_MESSAGE" value="got it to read the binary file" />
+    <MESSAGE value="started working on the massive switch statement" />
+    <option name="LAST_COMMIT_MESSAGE" value="started working on the massive switch statement" />
   </component>
   <component name="WindowStateProjectService">
     <state x="734" y="354" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585527859774">
@@ -106,10 +114,10 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1085" y="409" key="#com.intellij.ide.util.MemberChooser/-1920.363.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1585526161308" />
-    <state x="905" y="292" key="CommitChangelistDialog2" timestamp="1585528804381">
+    <state x="905" y="292" key="CommitChangelistDialog2" timestamp="1585533660185">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="905" y="292" key="CommitChangelistDialog2/-1920.363.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1585528804381" />
+    <state x="905" y="292" key="CommitChangelistDialog2/-1920.363.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1585533660185" />
     <state width="2517" height="418" key="GridCell.Tab.0.bottom" timestamp="1585529436617">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -130,9 +138,9 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="781" y="342" key="SettingsEditor/-1920.363.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1585529196038" />
-    <state x="872" y="432" key="Vcs.Push.Dialog.v2" timestamp="1585528807264">
+    <state x="872" y="432" key="Vcs.Push.Dialog.v2" timestamp="1585533663664">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="872" y="432" key="Vcs.Push.Dialog.v2/-1920.363.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1585528807264" />
+    <state x="872" y="432" key="Vcs.Push.Dialog.v2/-1920.363.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1585533663664" />
   </component>
 </project>
