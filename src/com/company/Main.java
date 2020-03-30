@@ -8,11 +8,11 @@ import java.util.Vector;
 
 public class Main {
 
-    public static void print(String s) {
-        System.out.println(s);
-    }
 
     private static Vector<Byte> program = new Vector<Byte>();
+    private static Byte[][] registers = new Byte[32][4];
+    private static Byte[] memory;
+    private static Byte[] stack;
 
     private static void ReadFile(String file) {
         InputStream inputStream;
@@ -33,6 +33,10 @@ public class Main {
             e.printStackTrace();
         }
 
+    }
+
+    private static void print(String s) {
+        System.out.println(s);
     }
 
     public static void ADD (int inst) {
@@ -158,7 +162,7 @@ public class Main {
                     program.get(i + 1) << 16 |
                     program.get(i) << 24;
             if ((instruction & 0b100010110000000000000000000000) == 0b100010110000000000000000000000) ADD(instruction);
-            else if ()
+            else if ((instruction & 0b100010110000000000000000000000) == 0b100010110000000000000000000000)
 
         }
 
