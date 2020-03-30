@@ -34,9 +34,26 @@ public class Main {
 
     }
 
+    public static void ADD (int inst) {
+
+    }
+
     public static void main(String[] args) {
 	// write your code here
         ReadFile(args[0]);
+        for (int i = 0; i < program.size(); i += 4) { //go through el programo
+            int instruction = program.get(i + 3) |
+                    program.get(i + 2) << 8 |
+                    program.get(i + 1) << 16 |
+                    program.get(i) << 24;
+            switch (instruction) {
+                case(instruction & 0b100010110000000000000000000000):
+                    break;
+                default:
+                    print("Invalid instruction! +" + Integer.toBinaryString(instruction));
+                    break;
+            }
+        }
 
     }
 }
