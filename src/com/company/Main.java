@@ -22,6 +22,7 @@ public class Main {
             while ((i = inputStream.read(current, 0, 4)) != -1) {
                 String byteString = "";
                 for (byte b: current) {
+                    program.add(b);
                     byteString += String.format("%8s", Integer.toBinaryString(b & 0xFF).replace(' ', '0'));
 //                    byteString += String.format("%8s", Integer.toBinaryString(b));
                 }
@@ -35,7 +36,7 @@ public class Main {
 
     public static void main(String[] args) {
 	// write your code here
-        print(args[0]);
         ReadFile(args[0]);
+
     }
 }
