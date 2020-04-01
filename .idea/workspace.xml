@@ -2,16 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5260e1e4-4f60-4b03-92da-0f17bd18259f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cs321AssemblyInterpreter.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/cs321.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/description.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/project-template.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main.java" afterDir="false" />
     </list>
@@ -119,7 +109,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585536845468</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="added registers and an unimplemented memory &amp; stack arr">
+      <created>1585702971405</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1585702971405</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -135,6 +132,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="added registers and an unimplemented memory &amp; stack arr" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="361" y="71" key="#Notifications" timestamp="1585703054261">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="71" key="#Notifications/0.0.1536.824@0.0.1536.824" timestamp="1585703054261" />
     <state x="734" y="354" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585527859774">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -147,10 +148,11 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1085" y="409" key="#com.intellij.ide.util.MemberChooser/-1920.363.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1585526161308" />
-    <state x="905" y="292" key="CommitChangelistDialog2" timestamp="1585536843803">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state x="543" y="14" key="CommitChangelistDialog2" timestamp="1585702970550">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="905" y="292" key="CommitChangelistDialog2/-1920.363.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1585536843803" />
+    <state x="543" y="14" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1585702970550" />
     <state width="2517" height="418" key="GridCell.Tab.0.bottom" timestamp="1585529436617">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -171,13 +173,18 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="781" y="342" key="SettingsEditor/-1920.363.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1585529196038" />
-    <state x="872" y="432" key="Vcs.Push.Dialog.v2" timestamp="1585536850453">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state x="523" y="254" key="Vcs.Push.Dialog.v2" timestamp="1585703524278">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="872" y="432" key="Vcs.Push.Dialog.v2/-1920.363.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1585536850453" />
+    <state x="523" y="254" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1585703524278" />
     <state x="839" y="441" key="com.intellij.ide.util.TipDialog" timestamp="1585615924074">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="839" y="441" key="com.intellij.ide.util.TipDialog/-1920.363.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1585615924074" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1585703021738">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1585703021738" />
   </component>
 </project>
