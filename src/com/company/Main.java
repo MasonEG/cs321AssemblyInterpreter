@@ -1,7 +1,4 @@
 package com.company;
-
-import org.jetbrains.annotations.NotNull;
-
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -15,7 +12,7 @@ public class Main {
     private static long[] registers = new long[32];
     private static Byte[] memory = new Byte[4096];
     private static Byte[] stack = new Byte[512];
-    private static int pC = 0;
+    private static long pC = 0;
     private static short flags = 0;
 
     private static void ReadFile(String file) {
@@ -76,19 +73,33 @@ public class Main {
         pC += addr;
     }
     public static void BCOND (int inst) {
+        int addr = (inst & 0b000000011111111111111111100000) >> 5;
+        int Rt = (inst & 0b000000000000000000000000011111);
 
+        if (flags == Rt) pC += addr;
     }
     public static void BL (int inst) {
+        int addr = (inst & 0b000000111111111111111111111111);
 
+        registers[30] = pC;
+        pC += addr;
     }
     public static void BR (int inst) {
+        int Rn = (inst & 0b000000000000000000001111100000) >> 5;
 
+        pC = registers[Rn];
     }
     public static void CBNZ (int inst) {
+        int addr = (inst & 0b000000011111111111111111100000) >> 5;
+        int Rt = (inst & 0b000000000000000000000000011111);
 
+        if (Rt != 0) pC += addr;
     }
     public static void CBZ (int inst) {
+        int addr = (inst & 0b000000011111111111111111100000) >> 5;
+        int Rt = (inst & 0b000000000000000000000000011111);
 
+        if (Rt == 0) pC += addr;
     }
     //This is an added instruction that will display the contents of all
     //        registers and memory, as well as the disassembled program (branch
@@ -187,10 +198,10 @@ public class Main {
 
 
 
-    public static void main(@NotNull String[] args) {
+    public static void main(String[] args) {
         ReadFile(args[0]);
         while ((pC * 4) < program.size()) { //go through el programo
-            int i = pC * 4;
+            int i = (int) pC * 4;
             int instruction = program.get(i + 3) |
                     program.get(i + 2) << 8 |
                     program.get(i + 1) << 16 |
@@ -215,6 +226,7 @@ public class Main {
             else if ((instruction & 0b100110110000000000000000000000) == 0b100110110000000000000000000000) MUL(instruction); //does not include shamt binary
             else if ((instruction & 0b101010100000000000000000000000) == 0b101010100000000000000000000000) ORR(instruction);
             else if ((instruction & 0b101100100000000000000000000000) == 0b101100100000000000000000000000) ORRI(instruction);
+            else if ((instruction & 0b111111111000000000000000000000) == 0b111111111000000000000000000000) ORRI(instruction);
             else if ((instruction & 0b111111111000000000000000000000) == 0b111111111000000000000000000000) PRNL(instruction);
             else if ((instruction & 0b111111111010000000000000000000) == 0b111111111010000000000000000000) PRNT(instruction);
             else if ((instruction & 0b111110000000000000000000000000) == 0b111110000000000000000000000000) STUR(instruction);
