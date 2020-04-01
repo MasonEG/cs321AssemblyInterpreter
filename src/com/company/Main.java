@@ -90,8 +90,12 @@ public class Main {
     public static void CBZ (int inst) {
 
     }
+    //This is an added instruction that will display the contents of all
+    //        registers and memory, as well as the disassembled program (branch
+    //        targets are given as the PC-relative offset from the branch
+    //        instruction).
     public static void DUMP () {
-
+        System.out.println(registers + "/n" + memory + "/n" + stack);
     }
     public static void EOR (int inst) {
         int Rm = (inst & 0b000000000001111100000000000000) >> 14;
@@ -107,8 +111,11 @@ public class Main {
 
         registers[Rd] = registers[Rn] ^ imm;
     }
-    public static void HALT (int inst) {
 
+    //This is an added instruction that will trigger a DUMP and terminate the emulator.
+    public static void HALT () {
+        DUMP();
+        System.exit(0);
     }
     public static void LDUR (int inst) {
 
@@ -194,14 +201,14 @@ public class Main {
             else if ((instruction & 0b100100100000000000000000000000) == 0b100100100000000000000000000000) ANDI(instruction);
             else if ((instruction & 0b000101000000000000000000000000) == 0b000101000000000000000000000000) B(instruction);
             else if ((instruction & 0b010101000000000000000000000000) == 0b010101000000000000000000000000) BCOND(instruction);
-
             else if ((instruction & 0b100101000000000000000000000000) == 0b100101000000000000000000000000) BL(instruction); //b instruction format
             else if ((instruction & 0b110101100000000000000000000000) == 0b110101100000000000000000000000) BR(instruction);
             else if ((instruction & 0b101101010000000000000000000000) == 0b101101010000000000000000000000) CBNZ(instruction); //cb instruction format
             else if ((instruction & 0b101101000000000000000000000000) == 0b101101000000000000000000000000) CBZ(instruction); //cb instruction format
+            else if ((instruction & 0b111111111100000000000000000000) == 0b111111111100000000000000000000) DUMP();
             else if ((instruction & 0b110010100000000000000000000000) == 0b110010100000000000000000000000) EOR(instruction);
             else if ((instruction & 0b110100100000000000000000000000) == 0b110100100000000000000000000000) EORI(instruction);
-            else if ((instruction & 0b111111111110000000000000000000) == 0b111111111110000000000000000000) HALT(instruction);
+            else if ((instruction & 0b111111111110000000000000000000) == 0b111111111110000000000000000000) HALT();
             else if ((instruction & 0b111110000100000000000000000000) == 0b111110000100000000000000000000) LDUR(instruction);
             else if ((instruction & 0b110100110110000000000000000000) == 0b110100110110000000000000000000) LSL(instruction);
             else if ((instruction & 0b110100110100000000000000000000) == 0b110100110100000000000000000000) LSR(instruction);
