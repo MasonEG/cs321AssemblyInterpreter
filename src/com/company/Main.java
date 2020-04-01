@@ -1,5 +1,7 @@
 package com.company;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -10,10 +12,11 @@ public class Main {
 
 
     private static Vector<Byte> program = new Vector<Byte>();
-    private static int[] registers = new int[32];
+    private static long[] registers = new long[32];
     private static Byte[] memory = new Byte[4096];
-    private static Byte[] stack;
+    private static Byte[] stack = new Byte[512];
     private static int pC = 0;
+    private static short flags = 0;
 
     private static void ReadFile(String file) {
         InputStream inputStream;
@@ -69,7 +72,8 @@ public class Main {
         registers[Rd] = registers[Rn] & imm;
     }
     public static void B (int inst) {
-
+        int addr = (inst & 0b000000111111111111111111111111);
+        pC += addr;
     }
     public static void BCOND (int inst) {
 
@@ -176,10 +180,9 @@ public class Main {
 
 
 
-    public static void main(String[] args) {
-        // write your code here
+    public static void main(@NotNull String[] args) {
         ReadFile(args[0]);
-        while (pC < program.size()) { //go through el programo
+        while ((pC * 4) < program.size()) { //go through el programo
             int i = pC * 4;
             int instruction = program.get(i + 3) |
                     program.get(i + 2) << 8 |

@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="5260e1e4-4f60-4b03-92da-0f17bd18259f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cs321.iml" beforeDir="false" afterPath="$PROJECT_DIR$/cs321.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -21,6 +22,10 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -59,7 +64,8 @@
       <option name="presentableId" value="Default" />
       <updated>1585525000869</updated>
       <workItem from="1585525005000" duration="13074000" />
-      <workItem from="1585615924549" duration="6786000" />
+      <workItem from="1585615924549" duration="6982000" />
+      <workItem from="1585701635431" duration="827000" />
     </task>
     <task id="LOCAL-00001" summary="small update">
       <created>1585525874821</created>
@@ -103,7 +109,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585536845468</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Filled out a ton of instructions, fixed a string concat error, added a program counter.">
+      <created>1585640674215</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1585640674215</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -116,7 +129,8 @@
     <MESSAGE value="started working on the massive switch statement" />
     <MESSAGE value="added empty functions for each instruction" />
     <MESSAGE value="added registers and an unimplemented memory &amp; stack arr" />
-    <option name="LAST_COMMIT_MESSAGE" value="added registers and an unimplemented memory &amp; stack arr" />
+    <MESSAGE value="Filled out a ton of instructions, fixed a string concat error, added a program counter." />
+    <option name="LAST_COMMIT_MESSAGE" value="Filled out a ton of instructions, fixed a string concat error, added a program counter." />
   </component>
   <component name="WindowStateProjectService">
     <state x="734" y="354" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585527859774">
@@ -131,10 +145,10 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1085" y="409" key="#com.intellij.ide.util.MemberChooser/-1920.363.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1585526161308" />
-    <state x="905" y="292" key="CommitChangelistDialog2" timestamp="1585536843803">
+    <state x="905" y="292" key="CommitChangelistDialog2" timestamp="1585640671389">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="905" y="292" key="CommitChangelistDialog2/-1920.363.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1585536843803" />
+    <state x="905" y="292" key="CommitChangelistDialog2/-1920.363.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1585640671389" />
     <state width="2517" height="418" key="GridCell.Tab.0.bottom" timestamp="1585529436617">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -155,13 +169,17 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="781" y="342" key="SettingsEditor/-1920.363.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1585529196038" />
-    <state x="872" y="432" key="Vcs.Push.Dialog.v2" timestamp="1585536850453">
+    <state x="872" y="432" key="Vcs.Push.Dialog.v2" timestamp="1585640677471">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="872" y="432" key="Vcs.Push.Dialog.v2/-1920.363.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1585536850453" />
-    <state x="839" y="441" key="com.intellij.ide.util.TipDialog" timestamp="1585615924074">
+    <state x="872" y="432" key="Vcs.Push.Dialog.v2/-1920.363.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1585640677471" />
+    <state x="839" y="441" key="com.intellij.ide.util.TipDialog" timestamp="1585701637772">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="839" y="441" key="com.intellij.ide.util.TipDialog/-1920.363.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1585615924074" />
+    <state x="839" y="441" key="com.intellij.ide.util.TipDialog/-1920.363.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1585701637772" />
+    <state x="344" y="596" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1585640695394">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="344" y="596" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/-1920.363.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1585640695394" />
   </component>
 </project>
