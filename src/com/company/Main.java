@@ -48,9 +48,9 @@ public class Main {
         registers[Rd] = registers[Rn] + registers[Rm];
     }
     public static void ADDI (int inst) { // I
-        int imm = (inst & 0b000000000111111111110000000000) >> 10;
-        int Rn = (inst & 0b000000000000000000001111100000) >> 5;
-        int Rd = (inst & 0b000000000000000000000000011111);
+        int imm = (inst & 0b00000000000111111111110000000000) >> 10;
+        int Rn = (inst & 0b00000000000000000000001111100000) >> 5;
+        int Rd = (inst & 0b00000000000000000000000000011111);
 
         registers[Rd] = registers[Rn] + imm;
     }
@@ -62,42 +62,42 @@ public class Main {
         registers[Rd] = registers[Rn] & registers[Rm];
     }
     public static void ANDI (int inst) {
-        int imm = (inst & 0b000000000111111111110000000000) >> 10;
-        int Rn = (inst & 0b000000000000000000001111100000) >> 5;
-        int Rd = (inst & 0b000000000000000000000000011111);
+        int imm = (inst & 0b00000000000111111111110000000000) >> 10;
+        int Rn = (inst & 0b00000000000000000000001111100000) >> 5;
+        int Rd = (inst & 0b00000000000000000000000000011111);
 
         registers[Rd] = registers[Rn] & imm;
     }
     public static void B (int inst) {
-        int addr = (inst & 0b000000111111111111111111111111);
+        int addr = (inst & 0b00000011111111111111111111111111);
         pC += addr;
     }
     public static void BCOND (int inst) {
-        int addr = (inst & 0b000000011111111111111111100000) >> 5;
-        int Rt = (inst & 0b000000000000000000000000011111);
+        int addr = (inst & 0b0000000011111111111111111100000) >> 5;
+        int Rt = (inst & 0b00000000000000000000000000011111);
 
         if (flags == Rt) pC += addr;
     }
     public static void BL (int inst) {
-        int addr = (inst & 0b000000111111111111111111111111);
+        int addr = (inst & 0b00000011111111111111111111111111);
 
         registers[30] = pC;
         pC += addr;
     }
     public static void BR (int inst) {
-        int Rn = (inst & 0b000000000000000000001111100000) >> 5;
+        int Rn = (inst & 0b00000000000000000000001111100000) >> 5;
 
         pC = registers[Rn];
     }
     public static void CBNZ (int inst) {
-        int addr = (inst & 0b000000011111111111111111100000) >> 5;
-        int Rt = (inst & 0b000000000000000000000000011111);
+        int addr = (inst & 0b0000000011111111111111111100000) >> 5;
+        int Rt = (inst & 0b00000000000000000000000000011111);
 
         if (Rt != 0) pC += addr;
     }
     public static void CBZ (int inst) {
-        int addr = (inst & 0b000000011111111111111111100000) >> 5;
-        int Rt = (inst & 0b000000000000000000000000011111);
+        int addr = (inst & 0b0000000011111111111111111100000) >> 5;
+        int Rt = (inst & 0b00000000000000000000000000011111);
 
         if (Rt == 0) pC += addr;
     }
@@ -151,9 +151,9 @@ public class Main {
         registers[Rd] = registers[Rn] ^ registers[Rm];
     }
     public static void EORI (int inst) {
-        int imm = (inst & 0b000000000111111111110000000000) >> 10;
-        int Rn = (inst & 0b000000000000000000001111100000) >> 5;
-        int Rd = (inst & 0b000000000000000000000000011111);
+        int imm = (inst & 0b00000000000111111111110000000000) >> 10;
+        int Rn = (inst & 0b00000000000000000000001111100000) >> 5;
+        int Rd = (inst & 0b00000000000000000000000000011111);
 
         registers[Rd] = registers[Rn] ^ imm;
     }
@@ -196,9 +196,9 @@ public class Main {
         registers[Rd] = registers[Rn] | registers[Rm];
     }
     public static void ORRI (int inst) {
-        int imm = (inst & 0b000000000111111111110000000000) >> 10;
-        int Rn = (inst & 0b000000000000000000001111100000) >> 5;
-        int Rd = (inst & 0b000000000000000000000000011111);
+        int imm = (inst & 0b00000000000111111111110000000000) >> 10;
+        int Rn = (inst & 0b00000000000000000000001111100000) >> 5;
+        int Rd = (inst & 0b00000000000000000000000000011111);
 
         registers[Rd] = registers[Rn] | imm;
     }
@@ -219,9 +219,9 @@ public class Main {
         registers[Rd] = registers[Rn] - registers[Rm];
     }
     public static void SUBI (int inst) {
-        int imm = (inst & 0b000000000111111111110000000000) >> 10;
-        int Rn = (inst & 0b000000000000000000001111100000) >> 5;
-        int Rd = (inst & 0b000000000000000000000000011111);
+        int imm = (inst & 0b00000000000111111111110000000000) >> 10;
+        int Rn = (inst & 0b00000000000000000000001111100000) >> 5;
+        int Rd = (inst & 0b00000000000000000000000000011111);
 
         registers[Rd] = registers[Rn] | imm;
     }
