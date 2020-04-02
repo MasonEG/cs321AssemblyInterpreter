@@ -41,9 +41,9 @@ public class Main {
 
     // 0b000000000000000000000000000000 (template)
     public static void ADD (int inst) { // R
-        int Rm = (inst & 0b000000000001111100000000000000) >> 14;
-        int Rn = (inst & 0b000000000000000000001111100000) >> 5;
-        int Rd = (inst & 0b000000000000000000000000011111);
+        int Rm = (inst & 0b00000000000111110000000000000000) >> 14;
+        int Rn = (inst & 0b00000000000000000000001111100000) >> 5;
+        int Rd = (inst & 0b00000000000000000000000000011111);
 
         registers[Rd] = registers[Rn] + registers[Rm];
     }
@@ -55,9 +55,9 @@ public class Main {
         registers[Rd] = registers[Rn] + imm;
     }
     public static void AND (int inst) {
-        int Rm = (inst & 0b000000000001111100000000000000) >> 14;
-        int Rn = (inst & 0b000000000000000000001111100000) >> 5;
-        int Rd = (inst & 0b000000000000000000000000011111);
+        int Rm = (inst & 0b00000000000111110000000000000000) >> 14;
+        int Rn = (inst & 0b00000000000000000000001111100000) >> 5;
+        int Rd = (inst & 0b00000000000000000000000000011111);
 
         registers[Rd] = registers[Rn] & registers[Rm];
     }
@@ -144,9 +144,9 @@ public class Main {
 
     }
     public static void EOR (int inst) {
-        int Rm = (inst & 0b000000000001111100000000000000) >> 14;
-        int Rn = (inst & 0b000000000000000000001111100000) >> 5;
-        int Rd = (inst & 0b000000000000000000000000011111);
+        int Rm = (inst & 0b00000000000111110000000000000000) >> 14;
+        int Rn = (inst & 0b00000000000000000000001111100000) >> 5;
+        int Rd = (inst & 0b00000000000000000000000000011111);
 
         registers[Rd] = registers[Rn] ^ registers[Rm];
     }
@@ -168,30 +168,30 @@ public class Main {
 
     }
     public static void LSL (int inst) {
-        int Rm = (inst & 0b000000000001111100000000000000) >> 14;
-        int Rn = (inst & 0b000000000000000000001111100000) >> 5;
-        int Rd = (inst & 0b000000000000000000000000011111);
+        int Rm = (inst & 0b00000000000111110000000000000000) >> 14;
+        int Rn = (inst & 0b00000000000000000000001111100000) >> 5;
+        int Rd = (inst & 0b00000000000000000000000000011111);
 
         registers[Rd] = registers[Rn] << registers[Rm];
     }
     public static void LSR (int inst) {
-        int Rm = (inst & 0b000000000001111100000000000000) >> 14;
-        int Rn = (inst & 0b000000000000000000001111100000) >> 5;
-        int Rd = (inst & 0b000000000000000000000000011111);
+        int Rm = (inst & 0b00000000000111110000000000000000) >> 14;
+        int Rn = (inst & 0b00000000000000000000001111100000) >> 5;
+        int Rd = (inst & 0b00000000000000000000000000011111);
 
         registers[Rd] = registers[Rn] >> registers[Rm];
     }
     public static void MUL (int inst) {
-        int Rm = (inst & 0b000000000001111100000000000000) >> 14;
-        int Rn = (inst & 0b000000000000000000001111100000) >> 5;
-        int Rd = (inst & 0b000000000000000000000000011111);
+        int Rm = (inst & 0b00000000000111110000000000000000) >> 14;
+        int Rn = (inst & 0b00000000000000000000001111100000) >> 5;
+        int Rd = (inst & 0b00000000000000000000000000011111);
 
         registers[Rd] = registers[Rn] * registers[Rm];
     }
     public static void ORR (int inst) {
-        int Rm = (inst & 0b000000000001111100000000000000) >> 14;
-        int Rn = (inst & 0b000000000000000000001111100000) >> 5;
-        int Rd = (inst & 0b000000000000000000000000011111);
+        int Rm = (inst & 0b00000000000111110000000000000000) >> 14;
+        int Rn = (inst & 0b00000000000000000000001111100000) >> 5;
+        int Rd = (inst & 0b00000000000000000000000000011111);
 
         registers[Rd] = registers[Rn] | registers[Rm];
     }
@@ -212,9 +212,9 @@ public class Main {
 
     }
     public static void SUB (int inst) {
-        int Rm = (inst & 0b000000000001111100000000000000) >> 14;
-        int Rn = (inst & 0b000000000000000000001111100000) >> 5;
-        int Rd = (inst & 0b000000000000000000000000011111);
+        int Rm = (inst & 0b00000000000111110000000000000000) >> 14;
+        int Rn = (inst & 0b00000000000000000000001111100000) >> 5;
+        int Rd = (inst & 0b00000000000000000000000000011111);
 
         registers[Rd] = registers[Rn] - registers[Rm];
     }
@@ -242,34 +242,34 @@ public class Main {
                     program.get(i + 2) << 8 |
                     program.get(i + 1) << 16 |
                     program.get(i) << 24;
-            if ((instruction & 0b100010110000000000000000000000) == 0b100010110000000000000000000000) ADD(instruction);
-            else if ((instruction & 0b100100010000000000000000000000) == 0b100100010000000000000000000000) ADDI(instruction);
-            else if ((instruction & 0b100010100000000000000000000000) == 0b100010100000000000000000000000) AND(instruction);
-            else if ((instruction & 0b100100100000000000000000000000) == 0b100100100000000000000000000000) ANDI(instruction);
-            else if ((instruction & 0b000101000000000000000000000000) == 0b000101000000000000000000000000) B(instruction);
-            else if ((instruction & 0b010101000000000000000000000000) == 0b010101000000000000000000000000) BCOND(instruction);
-            else if ((instruction & 0b100101000000000000000000000000) == 0b100101000000000000000000000000) BL(instruction); //b instruction format
-            else if ((instruction & 0b110101100000000000000000000000) == 0b110101100000000000000000000000) BR(instruction);
-            else if ((instruction & 0b101101010000000000000000000000) == 0b101101010000000000000000000000) CBNZ(instruction); //cb instruction format
-            else if ((instruction & 0b101101000000000000000000000000) == 0b101101000000000000000000000000) CBZ(instruction); //cb instruction format
-            else if ((instruction & 0b111111111100000000000000000000) == 0b111111111100000000000000000000) DUMP();
-            else if ((instruction & 0b110010100000000000000000000000) == 0b110010100000000000000000000000) EOR(instruction);
-            else if ((instruction & 0b110100100000000000000000000000) == 0b110100100000000000000000000000) EORI(instruction);
-            else if ((instruction & 0b111111111110000000000000000000) == 0b111111111110000000000000000000) HALT();
-            else if ((instruction & 0b111110000100000000000000000000) == 0b111110000100000000000000000000) LDUR(instruction);
-            else if ((instruction & 0b110100110110000000000000000000) == 0b110100110110000000000000000000) LSL(instruction);
-            else if ((instruction & 0b110100110100000000000000000000) == 0b110100110100000000000000000000) LSR(instruction);
-            else if ((instruction & 0b100110110000000000000000000000) == 0b100110110000000000000000000000) MUL(instruction); //does not include shamt binary
-            else if ((instruction & 0b101010100000000000000000000000) == 0b101010100000000000000000000000) ORR(instruction);
-            else if ((instruction & 0b101100100000000000000000000000) == 0b101100100000000000000000000000) ORRI(instruction);
-            else if ((instruction & 0b111111111000000000000000000000) == 0b111111111000000000000000000000) ORRI(instruction);
-            else if ((instruction & 0b111111111000000000000000000000) == 0b111111111000000000000000000000) PRNL(instruction);
-            else if ((instruction & 0b111111111010000000000000000000) == 0b111111111010000000000000000000) PRNT(instruction);
-            else if ((instruction & 0b111110000000000000000000000000) == 0b111110000000000000000000000000) STUR(instruction);
-            else if ((instruction & 0b110010110000000000000000000000) == 0b110010110000000000000000000000) SUB(instruction);
-            else if ((instruction & 0b110100010000000000000000000000) == 0b110100010000000000000000000000) SUBI(instruction);
-            else if ((instruction & 0b111100010000000000000000000000) == 0b111100010000000000000000000000) SUBIS(instruction);
-            else if ((instruction & 0b111010110000000000000000000000) == 0b111010110000000000000000000000) SUBS(instruction);
+            if ((instruction & 0b10001011000000000000000000000000) == 0b10001011000000000000000000000000) ADD(instruction);
+            else if ((instruction & 0b10010001000000000000000000000000) == 0b10010001000000000000000000000000) ADDI(instruction);
+            else if ((instruction & 0b10001010000000000000000000000000) == 0b10001010000000000000000000000000) AND(instruction);
+            else if ((instruction & 0b10010010000000000000000000000000) == 0b10010010000000000000000000000000) ANDI(instruction);
+            else if ((instruction & 0b00010100000000000000000000000000) == 0b00010100000000000000000000000000) B(instruction);
+            else if ((instruction & 0b01010100000000000000000000000000) == 0b01010100000000000000000000000000) BCOND(instruction);
+            else if ((instruction & 0b10010100000000000000000000000000) == 0b10010100000000000000000000000000) BL(instruction); //b instruction format
+            else if ((instruction & 0b11010110000000000000000000000000) == 0b11010110000000000000000000000000) BR(instruction);
+            else if ((instruction & 0b10110101000000000000000000000000) == 0b10110101000000000000000000000000) CBNZ(instruction); //cb instruction format
+            else if ((instruction & 0b10110100000000000000000000000000) == 0b10110100000000000000000000000000) CBZ(instruction); //cb instruction format
+            else if ((instruction & 0b11111111110000000000000000000000) == 0b11111111110000000000000000000000) DUMP();
+            else if ((instruction & 0b11001010000000000000000000000000) == 0b11001010000000000000000000000000) EOR(instruction);
+            else if ((instruction & 0b11010010000000000000000000000000) == 0b11010010000000000000000000000000) EORI(instruction);
+            else if ((instruction & 0b11111111111000000000000000000000) == 0b11111111111000000000000000000000) HALT();
+            else if ((instruction & 0b11111000010000000000000000000000) == 0b11111000010000000000000000000000) LDUR(instruction);
+            else if ((instruction & 0b11010011011000000000000000000000) == 0b11010011011000000000000000000000) LSL(instruction);
+            else if ((instruction & 0b11010011010000000000000000000000) == 0b11010011010000000000000000000000) LSR(instruction);
+            else if ((instruction & 0b10011011000000000000000000000000) == 0b10011011000000000000000000000000) MUL(instruction); //does not include shamt binary
+            else if ((instruction & 0b10101010000000000000000000000000) == 0b10101010000000000000000000000000) ORR(instruction);
+            else if ((instruction & 0b10110010000000000000000000000000) == 0b10110010000000000000000000000000) ORRI(instruction);
+            else if ((instruction & 0b11111111100000000000000000000000) == 0b11111111100000000000000000000000) ORRI(instruction);
+            else if ((instruction & 0b11111111100000000000000000000000) == 0b11111111100000000000000000000000) PRNL(instruction);
+            else if ((instruction & 0b11111111101000000000000000000000) == 0b11111111101000000000000000000000) PRNT(instruction);
+            else if ((instruction & 0b11111000000000000000000000000000) == 0b11111000000000000000000000000000) STUR(instruction);
+            else if ((instruction & 0b11001011000000000000000000000000) == 0b11001011000000000000000000000000) SUB(instruction);
+            else if ((instruction & 0b11010001000000000000000000000000) == 0b11010001000000000000000000000000) SUBI(instruction);
+            else if ((instruction & 0b11110001000000000000000000000000) == 0b11110001000000000000000000000000) SUBIS(instruction);
+            else if ((instruction & 0b11101011000000000000000000000000) == 0b11101011000000000000000000000000) SUBS(instruction);
 
             pC++;
             DUMP();
