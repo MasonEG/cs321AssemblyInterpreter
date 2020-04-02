@@ -106,7 +106,42 @@ public class Main {
     //        targets are given as the PC-relative offset from the branch
     //        instruction).
     public static void DUMP () {
-        System.out.println(registers + "/n" + memory + "/n" + stack);
+        System.out.println("registers:'" + "/n"); //print registers
+        for( int i = 0; i < registers.length; i++){
+            //specific format
+            if( i == 16)
+                System.out.println(" (IP0) X" + i + "  " + Long.toHexString(registers[i]) + " " + registers[i]);
+
+            else if( i == (17))
+                System.out.println(" (TP1) X" + i + "  " + Long.toHexString(registers[i]) + " " + registers[i]);
+
+            else if( i == (28))
+                System.out.println("  (SP) X" + i + "  " + Long.toHexString(registers[i]) + " " + registers[i]);
+
+            else if( i == (29))
+                System.out.println("  (FP) X" + i + "  " + Long.toHexString(registers[i]) + " " + registers[i]);
+
+            else if( i == (30))
+                System.out.println("  (LR) X" + i + "  " + Long.toHexString(registers[i]) + " " + registers[i]);
+
+            else if( i == (31))
+                System.out.println(" (XZR) X" + i + "  " + Long.toHexString(registers[i]) + " " + registers[i]);
+
+            // 1 or 2 digit
+            if(i < 10)
+                System.out.println("       X" + i + "   " + Long.toHexString(registers[i]) + " " + registers[i]);
+
+            else if (i >= 10);
+                System.out.println("       X" + i + "  " + Long.toHexString(registers[i]) + " " + registers[i]);
+        }
+
+        System.out.println("/n" + "/n" + "registers:" + "/n"); //print Stack
+        for( int j = 0; j < stack.length; j++){
+
+
+        }
+
+
     }
     public static void EOR (int inst) {
         int Rm = (inst & 0b000000000001111100000000000000) >> 14;
@@ -126,6 +161,7 @@ public class Main {
     //This is an added instruction that will trigger a DUMP and terminate the emulator.
     public static void HALT () {
         DUMP();
+        pC = (program.size() / 4) + 1;
         System.exit(0);
     }
     public static void LDUR (int inst) {
@@ -236,6 +272,7 @@ public class Main {
             else if ((instruction & 0b111010110000000000000000000000) == 0b111010110000000000000000000000) SUBS(instruction);
 
             pC++;
+            DUMP();
         }
 
     }
