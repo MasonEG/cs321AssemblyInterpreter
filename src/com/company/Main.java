@@ -165,7 +165,20 @@ public class Main {
         System.exit(0);
     }
     public static void LDUR (int inst) {
+        int Rn = (inst & 0b00000000000000000000001111100000) >> 5;
+        int Rt = (inst & 0b00000000000000000000000000011111);
+//        int op = (inst & 0b00000000000000000000110000000000) >> 10;
+        int dtAddr = (inst & 0b00000000000111111111000000000000) >> 12;
 
+        int addr = (int) registers[Rn] + dtAddr;
+        registers[Rt] = memory[addr] |
+                        memory[addr + 1] << 8 |
+                        memory[addr + 2] << 16 |
+                        memory[addr + 3] << 24 |
+                        memory[addr + 4] << 32 |
+                        memory[addr + 5] << 40 |
+                        memory[addr + 6] << 48 |
+                        memory[addr + 7] << 56;
     }
     public static void LSL (int inst) {
         int Rm = (inst & 0b00000000000111110000000000000000) >> 14;
