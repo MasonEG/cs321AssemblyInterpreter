@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5260e1e4-4f60-4b03-92da-0f17bd18259f" name="Default Changelist" comment="">
+    <list default="true" id="5260e1e4-4f60-4b03-92da-0f17bd18259f" name="Default Changelist" comment="added flags, filled out stack size, changed registers to longs, filled out B instruction">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main.java" afterDir="false" />
@@ -30,6 +30,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../cs339/microserviceslab" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -67,6 +68,7 @@
       <workItem from="1585525005000" duration="13074000" />
       <workItem from="1585615924549" duration="6982000" />
       <workItem from="1585701635431" duration="5198000" />
+      <workItem from="1585864215131" duration="3018000" />
     </task>
     <task id="LOCAL-00001" summary="small update">
       <created>1585525874821</created>
@@ -124,7 +126,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585702733653</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="added ldur instruction">
+      <created>1585868757324</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1585868757324</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -139,7 +148,8 @@
     <MESSAGE value="added registers and an unimplemented memory &amp; stack arr" />
     <MESSAGE value="Filled out a ton of instructions, fixed a string concat error, added a program counter." />
     <MESSAGE value="added flags, filled out stack size, changed registers to longs, filled out B instruction" />
-    <option name="LAST_COMMIT_MESSAGE" value="added flags, filled out stack size, changed registers to longs, filled out B instruction" />
+    <MESSAGE value="added ldur instruction" />
+    <option name="LAST_COMMIT_MESSAGE" value="added ldur instruction" />
   </component>
   <component name="WindowStateProjectService">
     <state x="485" y="55" key="#Main" timestamp="1585790964968">
@@ -163,14 +173,18 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1085" y="409" key="#com.intellij.ide.util.MemberChooser/-1920.363.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1585526161308" />
-    <state x="1128" y="588" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1585703582950">
+    <state x="1128" y="588" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1585867901995">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="1128" y="588" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/-1920.363.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1585703582950" />
-    <state x="905" y="292" key="CommitChangelistDialog2" timestamp="1585702731995">
+    <state x="1128" y="588" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/-1920.363.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1585867901995" />
+    <state x="905" y="292" key="CommitChangelistDialog2" timestamp="1585868755360">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="905" y="292" key="CommitChangelistDialog2/-1920.363.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1585702731995" />
+    <state x="905" y="292" key="CommitChangelistDialog2/-1920.363.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1585868755360" />
+    <state x="1060" y="454" key="FileChooserDialogImpl" timestamp="1585851708841">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1060" y="454" key="FileChooserDialogImpl/-1920.363.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1585851708841" />
     <state width="2517" height="418" key="GridCell.Tab.0.bottom" timestamp="1585529436617">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -199,10 +213,10 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="781" y="342" key="SettingsEditor/-1920.363.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1585529196038" />
-    <state x="872" y="432" key="Vcs.Push.Dialog.v2" timestamp="1585702735377">
+    <state x="872" y="432" key="Vcs.Push.Dialog.v2" timestamp="1585868760260">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="872" y="432" key="Vcs.Push.Dialog.v2/-1920.363.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1585702735377" />
+    <state x="872" y="432" key="Vcs.Push.Dialog.v2/-1920.363.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1585868760260" />
     <state x="839" y="441" key="com.intellij.ide.util.TipDialog" timestamp="1585701637772">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>

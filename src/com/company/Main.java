@@ -1,5 +1,6 @@
 package com.company;
 import java.io.*;
+import java.nio.ByteBuffer;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
@@ -222,7 +223,14 @@ public class Main {
 
     }
     public static void STUR (int inst) {
+        int Rn = (inst & 0b00000000000000000000001111100000) >> 5;
+        int Rt = (inst & 0b00000000000000000000000000011111);
+        int dtAddr = (inst & 0b00000000000111111111000000000000) >> 12;
 
+        ByteBuffer buff = ByteBuffer.allocate(Long.BYTES);
+        buff.putLong(registers[Rt]);
+        int addr = (int) registers[Rn] + dtAddr;
+        for (int i = 0; i < 8; i++) memory[addr + i] = buff.get(i);
     }
     public static void SUB (int inst) {
         int Rm = (inst & 0b00000000000111110000000000000000) >> 14;
