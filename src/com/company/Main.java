@@ -14,7 +14,7 @@ public class Main {
     private static Byte[] memory = new Byte[4096];
     private static Byte[] stack = new Byte[512];
     private static long pC = 0;
-    private static short flags = 0;
+    private static short flags = 0; // 0 for less than, 1 for equal, 2 for greater than
 
     private static void ReadFile(String file) {
         InputStream inputStream;
@@ -28,7 +28,7 @@ public class Main {
                     program.add(b);
                     byteString = byteString.concat(String.format("%8s", Integer.toBinaryString(b & 0xFF).replace(' ', '0')));
                 }
-                print(byteString.replace(' ', '0'));
+//                print(byteString.replace(' ', '0'));
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -42,7 +42,7 @@ public class Main {
 
     // 0b000000000000000000000000000000 (template)
     public static void ADD (int inst) { // R
-        int Rm = (inst & 0b00000000000111110000000000000000) >> 14;
+        int Rm = (inst & 0b00000000000111110000000000000000) >> 16;
         int Rn = (inst & 0b00000000000000000000001111100000) >> 5;
         int Rd = (inst & 0b00000000000000000000000000011111);
 
@@ -56,7 +56,7 @@ public class Main {
         registers[Rd] = registers[Rn] + imm;
     }
     public static void AND (int inst) {
-        int Rm = (inst & 0b00000000000111110000000000000000) >> 14;
+        int Rm = (inst & 0b00000000000111110000000000000000) >> 16;
         int Rn = (inst & 0b00000000000000000000001111100000) >> 5;
         int Rd = (inst & 0b00000000000000000000000000011111);
 
@@ -77,7 +77,44 @@ public class Main {
         int addr = (inst & 0b0000000011111111111111111100000) >> 5;
         int Rt = (inst & 0b00000000000000000000000000011111);
 
-        if (flags == Rt) pC += addr;
+        switch (Rt) {
+            case 0:
+                if (flags == 1) pC += addr;
+                break;
+            case 1:
+                if (flags != 1) pC += addr;
+                break;
+            case 2: //dunno what all this is
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+            case 6:
+                break;
+            case 7:
+                break;
+            case 8:
+                break;
+            case 9:
+                break;
+            case 10:
+                if (flags > 0) pC += addr;
+                break;
+            case 11:
+                if (flags == 0) pC += addr;
+                break;
+            case 12:
+                if (flags == 2) pC += addr;
+                break;
+            case 13:
+                if (flags < 2) pC += addr;
+                break;
+            default:
+                print("Error! BCOND got an invalid condition code: " + Rt);
+        }
     }
     public static void BL (int inst) {
         int addr = (inst & 0b00000011111111111111111111111111);
@@ -136,7 +173,7 @@ public class Main {
                 System.out.println("       X" + i + "  " + Long.toHexString(registers[i]) + " " + registers[i]);
         }
 
-        System.out.println("/n" + "/n" + "registers:" + "/n"); //print Stack
+        System.out.println("\n" + "\n" + "registers:" + "\n"); //print Stack
         for( int j = 0; j < stack.length; j++){
 
 
@@ -145,7 +182,7 @@ public class Main {
 
     }
     public static void EOR (int inst) {
-        int Rm = (inst & 0b00000000000111110000000000000000) >> 14;
+        int Rm = (inst & 0b00000000000111110000000000000000) >> 16;
         int Rn = (inst & 0b00000000000000000000001111100000) >> 5;
         int Rd = (inst & 0b00000000000000000000000000011111);
 
@@ -182,28 +219,28 @@ public class Main {
                         memory[addr + 7] << 56;
     }
     public static void LSL (int inst) {
-        int Rm = (inst & 0b00000000000111110000000000000000) >> 14;
+        int Rm = (inst & 0b00000000000111110000000000000000) >> 16;
         int Rn = (inst & 0b00000000000000000000001111100000) >> 5;
         int Rd = (inst & 0b00000000000000000000000000011111);
 
         registers[Rd] = registers[Rn] << registers[Rm];
     }
     public static void LSR (int inst) {
-        int Rm = (inst & 0b00000000000111110000000000000000) >> 14;
+        int Rm = (inst & 0b00000000000111110000000000000000) >> 16;
         int Rn = (inst & 0b00000000000000000000001111100000) >> 5;
         int Rd = (inst & 0b00000000000000000000000000011111);
 
         registers[Rd] = registers[Rn] >> registers[Rm];
     }
     public static void MUL (int inst) {
-        int Rm = (inst & 0b00000000000111110000000000000000) >> 14;
+        int Rm = (inst & 0b00000000000111110000000000000000) >> 16;
         int Rn = (inst & 0b00000000000000000000001111100000) >> 5;
         int Rd = (inst & 0b00000000000000000000000000011111);
 
         registers[Rd] = registers[Rn] * registers[Rm];
     }
     public static void ORR (int inst) {
-        int Rm = (inst & 0b00000000000111110000000000000000) >> 14;
+        int Rm = (inst & 0b00000000000111110000000000000000) >> 16;
         int Rn = (inst & 0b00000000000000000000001111100000) >> 5;
         int Rd = (inst & 0b00000000000000000000000000011111);
 
@@ -216,11 +253,13 @@ public class Main {
 
         registers[Rd] = registers[Rn] | imm;
     }
-    public static void PRNL (int inst) {
-
+    public static void PRNL () {
+        print("");
     }
     public static void PRNT (int inst) {
+        int Rd = (inst & 0b00000000000000000000000000011111);
 
+        print("register " + Rd + ": " + registers[Rd]);
     }
     public static void STUR (int inst) {
         int Rn = (inst & 0b00000000000000000000001111100000) >> 5;
@@ -247,10 +286,28 @@ public class Main {
         registers[Rd] = registers[Rn] | imm;
     }
     public static void SUBIS (int inst) {
+        int imm = (inst & 0b00000000000111111111110000000000) >> 10;
+        int Rn = (inst & 0b00000000000000000000001111100000) >> 5;
+        int Rd = (inst & 0b00000000000000000000000000011111);
+        long RnNum = registers[Rn];
+
+        registers[Rd] = RnNum - (long)imm;
+        if (RnNum > imm) flags = 2;
+        else if (RnNum < imm) flags = 0;
+        else flags = 1;
 
     }
     public static void SUBS (int inst) {
+        int Rm = (inst & 0b00000000000111110000000000000000) >> 16;
+        int Rn = (inst & 0b00000000000000000000001111100000) >> 5;
+        int Rd = (inst & 0b00000000000000000000000000011111);
+        long RnNum = registers[Rn];
+        long RmNum = registers[Rm];
 
+        registers[Rd] = RnNum - RmNum;
+        if (RnNum > RmNum) flags = 2;
+        else if (RnNum < RmNum) flags = 0;
+        else flags = 1;
     }
 
 
@@ -284,7 +341,7 @@ public class Main {
             else if ((instruction & 0b10101010000000000000000000000000) == 0b10101010000000000000000000000000) ORR(instruction);
             else if ((instruction & 0b10110010000000000000000000000000) == 0b10110010000000000000000000000000) ORRI(instruction);
             else if ((instruction & 0b11111111100000000000000000000000) == 0b11111111100000000000000000000000) ORRI(instruction);
-            else if ((instruction & 0b11111111100000000000000000000000) == 0b11111111100000000000000000000000) PRNL(instruction);
+            else if ((instruction & 0b11111111100000000000000000000000) == 0b11111111100000000000000000000000) PRNL();
             else if ((instruction & 0b11111111101000000000000000000000) == 0b11111111101000000000000000000000) PRNT(instruction);
             else if ((instruction & 0b11111000000000000000000000000000) == 0b11111000000000000000000000000000) STUR(instruction);
             else if ((instruction & 0b11001011000000000000000000000000) == 0b11001011000000000000000000000000) SUB(instruction);
